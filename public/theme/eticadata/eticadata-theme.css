@@ -1,0 +1,395 @@
+/* EticaData Business Theme - Based on enterprise application design */
+:root {
+  /* Primary business colors */
+  --bs-primary: #4a90a4;
+  --bs-primary-rgb: 74, 144, 164;
+  --bs-secondary: #7d8590;
+  --bs-secondary-rgb: 125, 133, 144;
+  --bs-success: #2d5a2d;
+  --bs-success-rgb: 45, 90, 45;
+  --bs-info: #5b9bd5;
+  --bs-info-rgb: 91, 155, 213;
+  --bs-warning: #d4a574;
+  --bs-warning-rgb: 212, 165, 116;
+  --bs-danger: #a94442;
+  --bs-danger-rgb: 169, 68, 66;
+  --bs-light: #f8f9fa;
+  --bs-light-rgb: 248, 249, 250;
+  --bs-dark: #2c3e50;
+  --bs-dark-rgb: 44, 62, 80;
+  
+  /* Background colors - clean business palette */
+  --bs-body-bg: #ffffff;
+  --bs-body-color: #333333;
+  --bs-emphasis-color: #1a1a1a;
+  --bs-secondary-color: #666666;
+  --bs-tertiary-color: #999999;
+  
+  /* Border colors - subtle and professional */
+  --bs-border-color: #d0d0d0;
+  --bs-border-color-translucent: rgba(208, 208, 208, 0.5);
+  
+  /* EticaData specific colors */
+  --eticadata-header-bg: #f5f5f5;
+  --eticadata-tab-active: #ffd966;
+  --eticadata-tab-inactive: #e8e8e8;
+  --eticadata-table-header: #4a90a4;
+  --eticadata-table-stripe: #f8f9fa;
+  --eticadata-input-bg: #ffffff;
+  --eticadata-button-primary: #4a90a4;
+  --eticadata-button-secondary: #7d8590;
+  --eticadata-sidebar-bg: #f0f0f0;
+}
+
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+/* Professional Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--bs-emphasis-color);
+  font-weight: 600;
+}
+
+/* Business-style navigation */
+.navbar {
+  background-color: var(--eticadata-header-bg) !important;
+  border-bottom: 1px solid var(--bs-border-color);
+  min-height: 35px;
+  padding: 0.25rem 1rem;
+}
+
+.navbar-brand {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--bs-emphasis-color) !important;
+}
+
+.navbar-nav .nav-link {
+  color: var(--bs-body-color) !important;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--bs-primary) !important;
+  background-color: rgba(74, 144, 164, 0.1);
+}
+
+/* EticaData-style tabs */
+.nav-tabs {
+  border-bottom: 1px solid var(--bs-border-color);
+  background-color: var(--eticadata-header-bg);
+}
+
+.nav-tabs .nav-link {
+  background-color: var(--eticadata-tab-inactive);
+  color: var(--bs-body-color);
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+  margin-right: 2px;
+}
+
+.nav-tabs .nav-link:hover {
+  background-color: #ffffff;
+  border-color: var(--bs-border-color);
+}
+
+.nav-tabs .nav-link.active {
+  background-color: var(--eticadata-tab-active);
+  color: var(--bs-emphasis-color);
+  border-color: var(--bs-border-color);
+  font-weight: 600;
+}
+
+/* Professional forms matching the interface */
+.form-control,
+.form-select {
+  background-color: var(--eticadata-input-bg);
+  border: 1px solid #bbb;
+  color: var(--bs-body-color);
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  height: auto;
+  min-height: 24px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #ffffff;
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 1px var(--bs-primary);
+}
+
+.form-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--bs-emphasis-color);
+  margin-bottom: 0.25rem;
+}
+
+/* Business-style buttons */
+.btn {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--eticadata-button-primary);
+  border-color: var(--eticadata-button-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #3a7a8a;
+  border-color: #3a7a8a;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: var(--eticadata-button-secondary);
+  border-color: var(--eticadata-button-secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #6a7380;
+  border-color: #6a7380;
+  color: white;
+}
+
+.btn-outline-primary {
+  color: var(--eticadata-button-primary);
+  border-color: var(--eticadata-button-primary);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--eticadata-button-primary);
+  border-color: var(--eticadata-button-primary);
+  color: white;
+}
+
+/* Professional cards */
+.card {
+  background-color: #ffffff;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card-header {
+  background-color: var(--eticadata-header-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+}
+
+/* Data tables - matching the interface style */
+.table {
+  font-size: 0.875rem;
+  margin-bottom: 0;
+}
+
+.table thead th {
+  background-color: var(--eticadata-table-header);
+  color: white;
+  border: 1px solid #aaa;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  padding: 0.375rem 0.5rem;
+  vertical-align: middle;
+}
+
+.table tbody td {
+  border: 1px solid var(--bs-border-color);
+  padding: 0.375rem 0.5rem;
+  vertical-align: middle;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) > td {
+  background-color: var(--eticadata-table-stripe);
+}
+
+/* Professional modals */
+.modal-content {
+  background-color: #ffffff;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  background-color: var(--eticadata-header-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+  padding: 0.5rem 0.75rem;
+}
+
+.modal-title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.modal-body {
+  padding: 0.75rem;
+}
+
+.modal-footer {
+  background-color: var(--eticadata-header-bg);
+  border-top: 1px solid var(--bs-border-color);
+  padding: 0.5rem 0.75rem;
+}
+
+/* Dropdowns */
+.dropdown-menu {
+  background-color: #ffffff;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 0;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+  color: var(--bs-body-color);
+  padding: 0.25rem 0.75rem;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--eticadata-table-stripe);
+  color: var(--bs-emphasis-color);
+}
+
+/* Professional alerts */
+.alert {
+  border-radius: 0;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.alert-primary {
+  background-color: rgba(74, 144, 164, 0.1);
+  border-color: var(--bs-primary);
+  color: #2c5a6b;
+}
+
+.alert-success {
+  background-color: rgba(45, 90, 45, 0.1);
+  border-color: var(--bs-success);
+  color: #1d3a1d;
+}
+
+.alert-warning {
+  background-color: rgba(212, 165, 116, 0.1);
+  border-color: var(--bs-warning);
+  color: #8b6914;
+}
+
+.alert-danger {
+  background-color: rgba(169, 68, 66, 0.1);
+  border-color: var(--bs-danger);
+  color: #7a2e2c;
+}
+
+.alert-info {
+  background-color: rgba(91, 155, 213, 0.1);
+  border-color: var(--bs-info);
+  color: #3d6b8f;
+}
+
+/* Progress bars */
+.progress {
+  background-color: #e9ecef;
+  border-radius: 0;
+  height: 1rem;
+}
+
+.progress-bar {
+  background-color: var(--bs-primary);
+}
+
+/* Badges - professional style */
+.badge {
+  font-size: 0.75rem;
+  border-radius: 0;
+  padding: 0.25em 0.5em;
+}
+
+/* Sidebar styling (like the left component panel) */
+.eticadata-sidebar {
+  background-color: var(--eticadata-sidebar-bg);
+  border-right: 1px solid var(--bs-border-color);
+  font-size: 0.875rem;
+}
+
+.eticadata-sidebar .list-group-item {
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--bs-border-color);
+  padding: 0.5rem 0.75rem;
+  color: var(--bs-body-color);
+}
+
+.eticadata-sidebar .list-group-item:hover,
+.eticadata-sidebar .list-group-item.active {
+  background-color: var(--bs-primary);
+  color: white;
+}
+
+/* Toolbar styling */
+.eticadata-toolbar {
+  background-color: var(--eticadata-header-bg);
+  border-bottom: 1px solid var(--bs-border-color);
+  padding: 0.5rem;
+}
+
+.eticadata-toolbar .btn {
+  margin-right: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Grid/Table container */
+.eticadata-grid {
+  border: 1px solid var(--bs-border-color);
+  background-color: white;
+}
+
+/* Status indicators */
+.status-indicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+}
+
+.status-active { background-color: #28a745; }
+.status-pending { background-color: #ffc107; }
+.status-inactive { background-color: #6c757d; }
+.status-error { background-color: #dc3545; }
+
+/* Professional input groups */
+.input-group .form-control,
+.input-group .form-select {
+  border-radius: 0;
+}
+
+.input-group-text {
+  background-color: var(--eticadata-header-bg);
+  border-color: #bbb;
+  color: var(--bs-body-color);
+  border-radius: 0;
+}
+
+/* Remove all rounded corners for business look */
+* {
+  border-radius: 0 !important;
+}

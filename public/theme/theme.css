@@ -10,6 +10,9 @@
 /* Vibrant Theme */
 /* @import url('./vibrant/vibrant-theme.css'); */
 
+/* EticaData Business Theme */
+/* @import url('./eticadata/eticadata-theme.css'); */
+
 /* Optional: Remove rounded corners from all Bootstrap components */
 /* @import url('./utils/no-rounded.css'); */
 
@@ -31,6 +34,7 @@ Theme Demos:
 - Dark Theme Demo: /theme/dark/demo.html
 - Minimal Theme Demo: /theme/minimal/demo.html  
 - Vibrant Theme Demo: /theme/vibrant/demo.html
+- EticaData Business Demo: /theme/eticadata/demo.html
 */
 
 /* Your custom styles go below this line */
