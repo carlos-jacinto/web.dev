@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Theme Demo - web.dev</title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./dark-theme.css">
+    <script src="../../lib/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">🌙 Dark Theme</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            More
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 mb-3">Dark Theme Demo</h1>
+            <p class="lead">A sleek dark theme with modern colors and smooth transitions</p>
+        </div>
+
+        <!-- Alerts -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3>Alerts</h3>
+                <div class="alert alert-primary" role="alert">
+                    <strong>Primary Alert!</strong> This is a primary alert with dark styling.
+                </div>
+                <div class="alert alert-success" role="alert">
+                    <strong>Success!</strong> Your action was completed successfully.
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    <strong>Warning!</strong> Please check this important information.
+                </div>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Error!</strong> Something went wrong. Please try again.
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3>Buttons</h3>
+                <button type="button" class="btn btn-primary me-2">Primary</button>
+                <button type="button" class="btn btn-secondary me-2">Secondary</button>
+                <button type="button" class="btn btn-success me-2">Success</button>
+                <button type="button" class="btn btn-danger me-2">Danger</button>
+                <button type="button" class="btn btn-warning me-2">Warning</button>
+                <button type="button" class="btn btn-info me-2">Info</button>
+                <button type="button" class="btn btn-light me-2">Light</button>
+                <button type="button" class="btn btn-dark">Dark</button>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Featured Card</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">This is a sample card in the dark theme. Notice the subtle background and border styling.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Another Card</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Cards in dark theme maintain readability while providing a modern, sleek appearance.</p>
+                        <a href="#" class="btn btn-outline-primary">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Dark Theme Card</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Perfect contrast ratios ensure accessibility while maintaining the dark aesthetic.</p>
+                        <a href="#" class="btn btn-success">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h3>Forms</h3>
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password">
+                    </div>
+                    <div class="mb-3">
+                        <label for="select" class="form-label">Select Option</label>
+                        <select class="form-select" id="select">
+                            <option>Choose...</option>
+                            <option value="1">Option 1</option>
+                            <option value="2">Option 2</option>
+                            <option value="3">Option 3</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="textarea" class="form-label">Message</label>
+                        <textarea class="form-control" id="textarea" rows="3" placeholder="Your message here..."></textarea>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="check">
+                        <label class="form-check-label" for="check">
+                            Remember me
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3>Table</h3>
+                <table class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td><span class="badge bg-success">Active</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jane Smith</td>
+                            <td><span class="badge bg-warning">Pending</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Edit</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Mike Johnson</td>
+                            <td><span class="badge bg-danger">Inactive</span></td>
+                            <td><button class="btn btn-sm btn-outline-primary">Edit</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Modal Demo Button -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3>Modal</h3>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#demoModal">
+                    Launch Demo Modal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="demoModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Dark Theme Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This is a modal in the dark theme. Notice how it maintains the dark aesthetic while ensuring readability.</p>
+                    <p>The dark theme uses carefully selected colors to provide good contrast and accessibility.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

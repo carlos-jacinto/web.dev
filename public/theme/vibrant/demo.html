@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrant Theme Demo - web.dev</title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./vibrant-theme.css">
+    <script src="../../lib/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">🌈 Vibrant Theme</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="border: 1px solid rgba(255,255,255,0.3);">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Creative</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            More
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">🎨 Design</a></li>
+                            <li><a class="dropdown-item" href="#">✨ Effects</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">🚀 Animations</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-3 mb-3" style="font-weight: 700; color: white; text-shadow: 0 0 20px rgba(255,255,255,0.5);">
+                Vibrant Theme Demo ✨
+            </h1>
+            <p class="lead" style="color: white; font-size: 1.3rem; text-shadow: 0 0 10px rgba(255,255,255,0.3);">
+                Bold colors, glassmorphism effects, and magical gradients
+            </p>
+        </div>
+
+        <!-- Feature Showcase -->
+        <div class="row mb-5">
+            <div class="col-md-4 text-center mb-4">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎨</div>
+                        <h5 class="card-title" style="font-weight: 600;">Glassmorphism</h5>
+                        <p class="card-text">Beautiful glass-like effects with backdrop blur and transparency</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">🌈</div>
+                        <h5 class="card-title" style="font-weight: 600;">Gradient Magic</h5>
+                        <p class="card-text">Dynamic gradients and color transitions throughout the interface</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="card h-100">
+                    <div class="card-body p-4">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">✨</div>
+                        <h5 class="card-title" style="font-weight: 600;">Interactive Effects</h5>
+                        <p class="card-text">Hover effects, animations, and delightful micro-interactions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="mb-4" style="color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5);">Alert Messages</h3>
+                <div class="alert alert-primary" role="alert">
+                    <strong>🔔 Primary Alert!</strong> This is a vibrant primary alert with glassmorphism effect.
+                </div>
+                <div class="alert alert-success" role="alert">
+                    <strong>✅ Success!</strong> Your colorful action was completed successfully with style.
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    <strong>⚠️ Warning!</strong> This vibrant warning catches attention with beautiful gradients.
+                </div>
+                <div class="alert alert-danger" role="alert">
+                    <strong>❌ Error!</strong> Even error messages look beautiful in this vibrant theme.
+                </div>
+                <div class="alert alert-info" role="alert">
+                    <strong>💡 Info!</strong> Information alerts with stunning visual effects and transparency.
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons Showcase -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="mb-4" style="color: white; text-shadow: 0 0 10px rgba(255,255,255,0.5);">Interactive Buttons</h3>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-primary me-3 mb-2">🚀 Primary</button>
+                    <button type="button" class="btn btn-secondary me-3 mb-2">🌊 Secondary</button>
+                    <button type="button" class="btn btn-success me-3 mb-2">🌿 Success</button>
+                    <button type="button" class="btn btn-danger me-3 mb-2">🔥 Danger</button>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-warning me-3 mb-2">☀️ Warning</button>
+                    <button type="button" class="btn btn-info me-3 mb-2">💎 Info</button>
+                    <button type="button" class="btn btn-light me-3 mb-2" style="color: #581c87;">⭐ Light</button>
+                    <button type="button" class="btn btn-dark me-3 mb-2">🌙 Dark</button>
+                </div>
+                <p style="color: rgba(255,255,255,0.8); font-style: italic;">Hover over buttons to see magical effects! ✨</p>
+            </div>
+        </div>
+
+        <!-- Creative Cards -->
+        <div class="row mb-4">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">🎯 Creative Dashboard</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Experience the magic of glassmorphism with this stunning card design featuring backdrop blur effects.</p>
+                        <div class="mb-3">
+                            <h6>Project Progress</h6>
+                            <div class="progress mb-2">
+                                <div class="progress-bar" style="width: 85%; background: linear-gradient(45deg, #8b5cf6, #a78bfa);"></div>
+                            </div>
+                            <small class="text-muted">85% Complete</small>
+                        </div>
+                        <button class="btn btn-primary">View Details</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">🌟 Feature Highlights</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled">
+                            <li class="mb-2">🎨 <strong>Glassmorphism Effects</strong> - Modern blur effects</li>
+                            <li class="mb-2">🌈 <strong>Gradient Backgrounds</strong> - Dynamic color schemes</li>
+                            <li class="mb-2">✨ <strong>Interactive Animations</strong> - Delightful interactions</li>
+                            <li class="mb-2">💫 <strong>Sparkle Elements</strong> - Magical touch effects</li>
+                        </ul>
+                        <button class="btn btn-success">Explore More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms with Style -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">🎭 Creative Contact Form</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="creativeEmail" class="form-label">✉️ Email Address</label>
+                                <input type="email" class="form-control" id="creativeEmail" placeholder="your@email.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="creativeName" class="form-label">👤 Full Name</label>
+                                <input type="text" class="form-control" id="creativeName" placeholder="Enter your name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="creativeSubject" class="form-label">🎯 Subject</label>
+                                <select class="form-select" id="creativeSubject">
+                                    <option>Choose your topic...</option>
+                                    <option>🎨 Design Inquiry</option>
+                                    <option>💡 Creative Collaboration</option>
+                                    <option>🚀 Project Discussion</option>
+                                    <option>✨ General Magic</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="creativeMessage" class="form-label">💬 Your Message</label>
+                                <textarea class="form-control" id="creativeMessage" rows="4" placeholder="Share your creative ideas..."></textarea>
+                            </div>
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="creativeNewsletter">
+                                <label class="form-check-label" for="creativeNewsletter">
+                                    🌟 Subscribe to our creative newsletter
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary me-2">Send Message ✨</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form 🔄</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">📊 Creative Stats Table</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>🎨 Project</th>
+                                        <th>📈 Progress</th>
+                                        <th>🏷️ Status</th>
+                                        <th>⚡ Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Brand Design</td>
+                                        <td>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-success" style="width: 90%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-success">🟢 Active</span></td>
+                                        <td><button class="btn btn-sm btn-outline-primary">View</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Web App UI</td>
+                                        <td>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-warning" style="width: 60%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-warning">🟡 In Progress</span></td>
+                                        <td><button class="btn btn-sm btn-outline-primary">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Design</td>
+                                        <td>
+                                            <div class="progress progress-sm">
+                                                <div class="progress-bar bg-info" style="width: 30%"></div>
+                                            </div>
+                                        </td>
+                                        <td><span class="badge bg-info">🔵 Planning</span></td>
+                                        <td><button class="btn btn-sm btn-outline-primary">Start</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vibrantModal">
+                                ✨ Open Magic Modal
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Status Badges and More -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <h5 class="card-title mb-4">🏷️ Status Badges Collection</h5>
+                        <div class="mb-3">
+                            <span class="badge bg-primary me-2 mb-2">🟣 Primary</span>
+                            <span class="badge bg-secondary me-2 mb-2">🔷 Secondary</span>
+                            <span class="badge bg-success me-2 mb-2">🟢 Success</span>
+                            <span class="badge bg-danger me-2 mb-2">🔴 Danger</span>
+                            <span class="badge bg-warning me-2 mb-2">🟡 Warning</span>
+                            <span class="badge bg-info me-2 mb-2">🔵 Info</span>
+                        </div>
+                        <p style="color: rgba(0,0,0,0.7); font-style: italic;">Even badges sparkle with vibrant theme magic! ✨</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vibrant Modal -->
+    <div class="modal fade" id="vibrantModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">✨ Vibrant Theme Modal Experience</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center mb-4">
+                        <div style="font-size: 4rem; margin-bottom: 1rem;">🌈✨🎨</div>
+                        <h4>Welcome to the Vibrant Universe!</h4>
+                    </div>
+                    <p>This modal showcases the full power of the vibrant theme with:</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">🎨 <strong>Glassmorphism</strong> - Frosted glass effects</li>
+                                <li class="mb-2">🌈 <strong>Gradients</strong> - Beautiful color transitions</li>
+                                <li class="mb-2">✨ <strong>Animations</strong> - Subtle hover effects</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2">💫 <strong>Sparkles</strong> - Magical button effects</li>
+                                <li class="mb-2">🌟 <strong>Glow Effects</strong> - Luminous borders</li>
+                                <li class="mb-2">🎭 <strong>Creative Design</strong> - Unique aesthetics</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="alert alert-info mt-3" role="alert">
+                        <strong>💡 Pro Tip:</strong> The vibrant theme is perfect for creative portfolios, artistic websites, and projects that need to make a bold visual statement!
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close 👋</button>
+                    <button type="button" class="btn btn-primary">Save Magic ✨</button>
+                    <button type="button" class="btn btn-success">Love It! 💖</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Additional sparkle animation for demo */
+        .progress-sm {
+            height: 0.5rem;
+        }
+        
+        /* Custom glow effect for this demo */
+        .card:hover {
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</body>
+</html>

@@ -1,0 +1,36 @@
+/* Main Theme Controller */
+/* Import your chosen theme by uncommenting one of the lines below */
+
+/* Dark Theme */
+/* @import url('./dark/dark-theme.css'); */
+
+/* Minimal Light Theme */
+/* @import url('./minimal/minimal-theme.css'); */
+
+/* Vibrant Theme */
+/* @import url('./vibrant/vibrant-theme.css'); */
+
+/* Optional: Remove rounded corners from all Bootstrap components */
+/* @import url('./utils/no-rounded.css'); */
+
+/* 
+Usage Instructions:
+1. Uncomment the theme you want to use
+2. Optionally uncomment the no-rounded.css import to remove all rounded corners
+3. You can combine any theme with the no-rounded utility
+
+Example combinations:
+- Dark theme without rounded corners:
+  @import url('./dark/dark-theme.css');
+  @import url('./utils/no-rounded.css');
+
+- Vibrant theme with rounded corners (default):
+  @import url('./vibrant/vibrant-theme.css');
+
+Theme Demos:
+- Dark Theme Demo: /theme/dark/demo.html
+- Minimal Theme Demo: /theme/minimal/demo.html  
+- Vibrant Theme Demo: /theme/vibrant/demo.html
+*/
+
+/* Your custom styles go below this line */

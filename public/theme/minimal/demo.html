@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Theme Demo - web.dev</title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./minimal-theme.css">
+    <script src="../../lib/vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-weight: 600;">✨ Minimal Theme</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            More
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Something else</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container my-5">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 mb-3" style="font-weight: 300; color: #1e293b;">Minimal Theme Demo</h1>
+            <p class="lead">Clean, modern design with subtle shadows and perfect typography</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="row mb-5">
+            <div class="col-md-4 text-center">
+                <div class="p-4">
+                    <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="text-primary" style="font-size: 1.5rem;">🎨</i>
+                    </div>
+                    <h5>Clean Design</h5>
+                    <p class="text-muted">Minimalist approach with focus on content and usability</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="p-4">
+                    <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="text-success" style="font-size: 1.5rem;">⚡</i>
+                    </div>
+                    <h5>Fast & Light</h5>
+                    <p class="text-muted">Optimized for performance with minimal visual overhead</p>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="p-4">
+                    <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="text-info" style="font-size: 1.5rem;">📱</i>
+                    </div>
+                    <h5>Responsive</h5>
+                    <p class="text-muted">Works perfectly on all devices and screen sizes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="mb-3">Alerts</h3>
+                <div class="alert alert-primary" role="alert">
+                    <strong>Information:</strong> This is a primary alert with clean minimal styling.
+                </div>
+                <div class="alert alert-success" role="alert">
+                    <strong>Success:</strong> Your action was completed successfully with a subtle left border.
+                </div>
+                <div class="alert alert-warning" role="alert">
+                    <strong>Warning:</strong> Please review this important information before proceeding.
+                </div>
+                <div class="alert alert-danger" role="alert">
+                    <strong>Error:</strong> Something went wrong. Please check your input and try again.
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="mb-3">Buttons</h3>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-primary me-2">Primary</button>
+                    <button type="button" class="btn btn-secondary me-2">Secondary</button>
+                    <button type="button" class="btn btn-success me-2">Success</button>
+                    <button type="button" class="btn btn-danger me-2">Danger</button>
+                    <button type="button" class="btn btn-warning me-2">Warning</button>
+                    <button type="button" class="btn btn-info me-2">Info</button>
+                </div>
+                <div class="mb-3">
+                    <button type="button" class="btn btn-outline-primary me-2">Outline Primary</button>
+                    <button type="button" class="btn btn-outline-secondary me-2">Outline Secondary</button>
+                    <button type="button" class="btn btn-outline-success me-2">Outline Success</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Featured Article</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">This card demonstrates the minimal theme's clean approach to component design with subtle shadows.</p>
+                        <a href="#" class="btn btn-primary btn-sm">Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Design Principles</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Focus on typography, spacing, and subtle visual cues to create an elegant user experience.</p>
+                        <a href="#" class="btn btn-outline-primary btn-sm">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">User Experience</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Minimal design reduces cognitive load while maintaining functionality and aesthetic appeal.</p>
+                        <a href="#" class="btn btn-success btn-sm">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Forms and Table -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h3 class="mb-3">Contact Form</h3>
+                <form class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="your.email@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <select class="form-select" id="subject" required>
+                            <option value="">Choose a subject...</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Support Request</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Your message here..." required></textarea>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="newsletter">
+                        <label class="form-check-label" for="newsletter">
+                            Subscribe to newsletter
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="reset" class="btn btn-outline-secondary ms-2">Reset</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3 class="mb-3">Data Table</h3>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>MacBook Pro</td>
+                                <td>Laptop</td>
+                                <td>$1,299</td>
+                                <td><span class="badge bg-success">In Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>iPhone 14</td>
+                                <td>Phone</td>
+                                <td>$999</td>
+                                <td><span class="badge bg-warning text-dark">Low Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>iPad Air</td>
+                                <td>Tablet</td>
+                                <td>$599</td>
+                                <td><span class="badge bg-danger">Out of Stock</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>AirPods Pro</td>
+                                <td>Audio</td>
+                                <td>$249</td>
+                                <td><span class="badge bg-success">In Stock</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-4">
+                    <h4>Modal Demo</h4>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#minimalModal">
+                        Open Modal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress and Badges -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h3 class="mb-3">Progress Indicators</h3>
+                <div class="mb-3">
+                    <label class="form-label">Project Completion</label>
+                    <div class="progress mb-2">
+                        <div class="progress-bar bg-primary" style="width: 75%"></div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Server Load</label>
+                    <div class="progress mb-2">
+                        <div class="progress-bar bg-warning" style="width: 45%"></div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Storage Used</label>
+                    <div class="progress">
+                        <div class="progress-bar bg-danger" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <h4>Status Badges</h4>
+                <span class="badge bg-primary me-2">Primary</span>
+                <span class="badge bg-secondary me-2">Secondary</span>
+                <span class="badge bg-success me-2">Success</span>
+                <span class="badge bg-danger me-2">Danger</span>
+                <span class="badge bg-warning text-dark me-2">Warning</span>
+                <span class="badge bg-info text-dark">Info</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="minimalModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Minimal Theme Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This modal demonstrates the clean, minimal aesthetic with subtle shadows and perfect spacing.</p>
+                    <p>The minimal theme focuses on:</p>
+                    <ul>
+                        <li>Clean typography and spacing</li>
+                        <li>Subtle visual cues</li>
+                        <li>Excellent readability</li>
+                        <li>Modern, professional appearance</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
