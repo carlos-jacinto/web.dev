@@ -3,9 +3,1018 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Website Builder - Drag & Drop Editor</title>
+    <link rel="shortcut icon" href="../../assets/images/favicon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="../../lib/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../theme/theme.css">
+    <style>
+        /* Builder Interface Styles */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            overflow: hidden;
+        }
+
+        .builder-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        /* Sidebar - Component Library */
+        .sidebar {
+            width: 280px;
+            background: white;
+            border-right: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            background: #2c3e50;
+            color: white;
+            font-weight: 600;
+            border-bottom: 1px solid #34495e;
+        }
+
+        .sidebar-tabs {
+            display: flex;
+            background: #ecf0f1;
+        }
+
+        .sidebar-tab {
+            flex: 1;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            font-size: 12px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .sidebar-tab.active {
+            background: white;
+            border-bottom: 2px solid #3498db;
+        }
+
+        .components-panel {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .component-group {
+            margin-bottom: 20px;
+        }
+
+        .component-group-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .component-item {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            cursor: grab;
+            transition: all 0.2s;
+            text-align: left;
+            font-size: 13px;
+            color: #495057;
+        }
+
+        .component-item:hover {
+            background: #e9ecef;
+            border-color: #3498db;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .component-item:active {
+            cursor: grabbing;
+        }
+
+        .component-item i {
+            margin-right: 8px;
+            color: #666;
+        }
+
+        /* Main Editor Area */
+        .editor-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Toolbar */
+        .toolbar {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .toolbar-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border-right: 1px solid #eee;
+            padding-right: 15px;
+            margin-right: 15px;
+        }
+
+        .toolbar-group:last-child {
+            border-right: none;
+            margin-right: 0;
+        }
+
+        .toolbar-btn {
+            padding: 6px 12px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 3px;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .toolbar-btn:hover {
+            background: #f8f9fa;
+            border-color: #3498db;
+        }
+
+        .toolbar-btn.active {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        .device-selector {
+            display: flex;
+            gap: 5px;
+        }
+
+        /* Canvas Area */
+        .canvas-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+            background: #f0f0f0;
+            overflow: auto;
+        }
+
+        .canvas {
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .canvas.desktop {
+            width: 1200px;
+            min-height: 800px;
+        }
+
+        .canvas.tablet {
+            width: 768px;
+            min-height: 1024px;
+        }
+
+        .canvas.mobile {
+            width: 375px;
+            min-height: 667px;
+        }
+
+        /* Drop Zones */
+        .drop-zone {
+            min-height: 60px;
+            border: 2px dashed transparent;
+            margin: 5px 0;
+            padding: 15px;
+            transition: all 0.2s;
+            position: relative;
+        }
+
+        .drop-zone.drag-over {
+            border-color: #3498db;
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .drop-zone:empty:before {
+            content: 'Drop components here';
+            display: block;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+            padding: 20px;
+        }
+
+        /* Dropped Elements */
+        .dropped-element {
+            position: relative;
+            margin: 10px 0;
+            outline: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .dropped-element:hover {
+            outline-color: #3498db;
+        }
+
+        .dropped-element.selected {
+            outline-color: #e74c3c;
+            outline-width: 2px;
+        }
+
+        .element-controls {
+            position: absolute;
+            top: -30px;
+            right: 0;
+            background: #333;
+            border-radius: 3px;
+            opacity: 0;
+            transition: all 0.2s;
+            z-index: 100;
+        }
+
+        .dropped-element:hover .element-controls,
+        .dropped-element.selected .element-controls {
+            opacity: 1;
+        }
+
+        .control-btn {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 4px 8px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .control-btn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Properties Panel */
+        .properties-panel {
+            width: 300px;
+            background: white;
+            border-left: 1px solid #ddd;
+            display: flex;
+            flex-direction: column;
+            box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        }
+
+        .properties-header {
+            padding: 15px;
+            background: #2c3e50;
+            color: white;
+            font-weight: 600;
+            border-bottom: 1px solid #34495e;
+        }
+
+        .properties-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        .property-group {
+            margin-bottom: 20px;
+        }
+
+        .property-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .property-input {
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+
+        .property-input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .color-picker-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .color-picker {
+            width: 40px;
+            height: 30px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        /* Responsive helpers */
+        @media (max-width: 1400px) {
+            .properties-panel {
+                display: none;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .sidebar {
+                width: 250px;
+            }
+        }
+
+        /* Component Preview Styles */
+        .preview-text {
+            padding: 10px;
+            background: #f8f9fa;
+            border-left: 3px solid #007bff;
+        }
+
+        .preview-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 5px;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 200px;
+            background: #f8f9fa;
+            border: 1px dashed #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .preview-card {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            background: white;
+        }
+
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="builder-container">
+        <!-- Sidebar - Component Library -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>🎨 Website Builder</span>
+                    <button class="btn btn-sm btn-outline-light" onclick="togglePropertiesPanel()">⚙️</button>
+                </div>
+            </div>
+            
+            <div class="sidebar-tabs">
+                <button class="sidebar-tab active" data-tab="components">Components</button>
+                <button class="sidebar-tab" data-tab="templates">Templates</button>
+                <button class="sidebar-tab" data-tab="media">Media</button>
+            </div>
+
+            <div class="components-panel" id="componentsPanel">
+                <div class="component-group">
+                    <div class="component-group-title">📝 Text Elements</div>
+                    <button class="component-item" draggable="true" data-component="heading">
+                        <i>H</i> Heading
+                    </button>
+                    <button class="component-item" draggable="true" data-component="paragraph">
+                        <i>¶</i> Paragraph
+                    </button>
+                    <button class="component-item" draggable="true" data-component="quote">
+                        <i>"</i> Quote
+                    </button>
+                    <button class="component-item" draggable="true" data-component="list">
+                        <i>•</i> List
+                    </button>
+                </div>
+
+                <div class="component-group">
+                    <div class="component-group-title">🎛️ Interactive</div>
+                    <button class="component-item" draggable="true" data-component="button">
+                        <i>⬜</i> Button
+                    </button>
+                    <button class="component-item" draggable="true" data-component="form">
+                        <i>📝</i> Form
+                    </button>
+                    <button class="component-item" draggable="true" data-component="input">
+                        <i>📄</i> Input Field
+                    </button>
+                    <button class="component-item" draggable="true" data-component="navbar">
+                        <i>☰</i> Navigation
+                    </button>
+                </div>
+
+                <div class="component-group">
+                    <div class="component-group-title">🖼️ Media</div>
+                    <button class="component-item" draggable="true" data-component="image">
+                        <i>🖼️</i> Image
+                    </button>
+                    <button class="component-item" draggable="true" data-component="video">
+                        <i>📹</i> Video
+                    </button>
+                    <button class="component-item" draggable="true" data-component="gallery">
+                        <i>🖼️</i> Gallery
+                    </button>
+                </div>
+
+                <div class="component-group">
+                    <div class="component-group-title">📐 Layout</div>
+                    <button class="component-item" draggable="true" data-component="container">
+                        <i>⬜</i> Container
+                    </button>
+                    <button class="component-item" draggable="true" data-component="row">
+                        <i>═</i> Row
+                    </button>
+                    <button class="component-item" draggable="true" data-component="column">
+                        <i>‖</i> Column
+                    </button>
+                    <button class="component-item" draggable="true" data-component="card">
+                        <i>🃏</i> Card
+                    </button>
+                    <button class="component-item" draggable="true" data-component="hero">
+                        <i>🎯</i> Hero Section
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Editor -->
+        <div class="editor-container">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" onclick="undo()" title="Undo">↶</button>
+                    <button class="toolbar-btn" onclick="redo()" title="Redo">↷</button>
+                </div>
+                
+                <div class="toolbar-group device-selector">
+                    <button class="toolbar-btn active" data-device="desktop" title="Desktop">🖥️</button>
+                    <button class="toolbar-btn" data-device="tablet" title="Tablet">📱</button>
+                    <button class="toolbar-btn" data-device="mobile" title="Mobile">📱</button>
+                </div>
+
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" onclick="previewSite()" title="Preview">👁️</button>
+                    <button class="toolbar-btn" onclick="saveSite()" title="Save">💾</button>
+                    <button class="toolbar-btn" onclick="exportSite()" title="Export">📤</button>
+                </div>
+
+                <div class="toolbar-group">
+                    <button class="toolbar-btn" onclick="clearCanvas()" title="Clear All">🗑️</button>
+                </div>
+
+                <div style="margin-left: auto;">
+                    <span style="font-size: 12px; color: #666;">Auto-save: <span id="saveStatus">Saved</span></span>
+                </div>
+            </div>
+
+            <!-- Canvas -->
+            <div class="canvas-container">
+                <div class="canvas desktop" id="canvas">
+                    <div class="drop-zone"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Properties Panel -->
+        <div class="properties-panel" id="propertiesPanel">
+            <div class="properties-header">
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span>⚙️ Properties</span>
+                    <button class="btn btn-sm btn-outline-light" onclick="togglePropertiesPanel()">✕</button>
+                </div>
+            </div>
+            <div class="properties-content" id="propertiesContent">
+                <div style="text-align: center; padding: 40px 20px; color: #666; font-style: italic;">
+                    Select an element to edit its properties
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div class="loading" id="loading" style="display: none;">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <script src="../../lib/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Global variables
+        let draggedElement = null;
+        let selectedElement = null;
+        let history = [];
+        let historyIndex = -1;
+        let components = {};
+        let currentDevice = 'desktop';
+
+        // Initialize builder
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeBuilder();
+            setupEventListeners();
+            loadComponents();
+        });
+
+        function initializeBuilder() {
+            console.log('🎨 Website Builder initialized');
+            saveState();
+        }
+
+        function setupEventListeners() {
+            // Sidebar tabs
+            document.querySelectorAll('.sidebar-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    switchTab(this.dataset.tab);
+                });
+            });
+
+            // Device selector
+            document.querySelectorAll('[data-device]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    switchDevice(this.dataset.device);
+                });
+            });
+
+            // Component drag events
+            document.querySelectorAll('.component-item').forEach(item => {
+                item.addEventListener('dragstart', function(e) {
+                    draggedElement = this.dataset.component;
+                    this.style.opacity = '0.5';
+                    console.log('🎯 Started dragging:', draggedElement);
+                });
+
+                item.addEventListener('dragend', function() {
+                    this.style.opacity = '1';
+                    draggedElement = null;
+                    console.log('🎯 Finished dragging');
+                });
+            });
+
+            // Setup drop zones
+            setupDropZones();
+
+            // Canvas click events
+            document.getElementById('canvas').addEventListener('click', function(e) {
+                if (e.target.classList.contains('dropped-element')) {
+                    selectElement(e.target);
+                } else {
+                    deselectAll();
+                }
+            });
+
+            // Auto-save
+            setInterval(autoSave, 30000); // Auto-save every 30 seconds
+        }
+
+        function loadComponents() {
+            components = {
+                heading: {
+                    html: '<h2 class="editable" contenteditable="true">Your Heading Here</h2>',
+                    properties: {
+                        text: 'Your Heading Here',
+                        size: 'h2',
+                        color: '#333333',
+                        alignment: 'left'
+                    }
+                },
+                paragraph: {
+                    html: '<p class="editable" contenteditable="true">Your paragraph text goes here. Click to edit this content.</p>',
+                    properties: {
+                        text: 'Your paragraph text goes here. Click to edit this content.',
+                        color: '#666666',
+                        alignment: 'left'
+                    }
+                },
+                button: {
+                    html: '<button class="btn btn-primary editable">Click Me</button>',
+                    properties: {
+                        text: 'Click Me',
+                        color: '#007bff',
+                        size: 'medium',
+                        link: '#'
+                    }
+                },
+                image: {
+                    html: '<div class="preview-image">Click to add image</div>',
+                    properties: {
+                        src: '',
+                        alt: 'Image description',
+                        width: '100%',
+                        height: 'auto'
+                    }
+                },
+                card: {
+                    html: '<div class="preview-card"><h5>Card Title</h5><p>Card content goes here. This is a sample card component.</p><button class="btn btn-primary btn-sm">Action</button></div>',
+                    properties: {
+                        title: 'Card Title',
+                        content: 'Card content goes here.',
+                        buttonText: 'Action'
+                    }
+                },
+                container: {
+                    html: '<div class="container" style="border: 1px dashed #ccc; min-height: 100px; padding: 20px;"><div class="drop-zone"></div></div>',
+                    properties: {
+                        padding: '20px',
+                        background: 'transparent'
+                    }
+                },
+                navbar: {
+                    html: '<nav class="navbar navbar-expand-lg navbar-dark bg-dark"><div class="container"><a class="navbar-brand" href="#">Brand</a><div class="navbar-nav"><a class="nav-link" href="#">Home</a><a class="nav-link" href="#">About</a><a class="nav-link" href="#">Contact</a></div></div></nav>',
+                    properties: {
+                        brand: 'Brand',
+                        background: '#343a40'
+                    }
+                },
+                hero: {
+                    html: '<div class="hero-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; padding: 80px 20px;"><h1>Welcome to Our Website</h1><p class="lead">This is a hero section. Edit this content to match your needs.</p><button class="btn btn-light btn-lg">Get Started</button></div>',
+                    properties: {
+                        title: 'Welcome to Our Website',
+                        subtitle: 'This is a hero section. Edit this content to match your needs.',
+                        buttonText: 'Get Started'
+                    }
+                }
+            };
+        }
+
+        function setupDropZones() {
+            // Setup event listeners for all existing drop zones
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.addEventListener('dragover', allowDrop);
+                zone.addEventListener('dragleave', dragLeave);
+                zone.addEventListener('drop', drop);
+            });
+        }
+
+        // Drag and Drop Functions
+        function allowDrop(event) {
+            event.preventDefault();
+            event.currentTarget.classList.add('drag-over');
+        }
+
+        function dragLeave(event) {
+            event.currentTarget.classList.remove('drag-over');
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            event.currentTarget.classList.remove('drag-over');
+            
+            if (draggedElement && components[draggedElement]) {
+                const component = components[draggedElement];
+                const elementDiv = document.createElement('div');
+                elementDiv.className = 'dropped-element';
+                elementDiv.innerHTML = `
+                    <div class="element-controls">
+                        <button class="control-btn" onclick="moveUp(this.parentElement.parentElement)" title="Move Up">↑</button>
+                        <button class="control-btn" onclick="editElement(this.parentElement.parentElement)" title="Edit">✏️</button>
+                        <button class="control-btn" onclick="cloneElement(this.parentElement.parentElement)" title="Clone">📋</button>
+                        <button class="control-btn" onclick="removeElement(this.parentElement.parentElement)" title="Delete">🗑️</button>
+                        <button class="control-btn" onclick="moveDown(this.parentElement.parentElement)" title="Move Down">↓</button>
+                    </div>
+                    ${component.html}
+                `;
+                
+                // Store component data
+                elementDiv.dataset.componentType = draggedElement;
+                elementDiv.dataset.properties = JSON.stringify(component.properties);
+                
+                event.currentTarget.appendChild(elementDiv);
+                
+                // Set up event listeners for any nested drop zones in the new element
+                elementDiv.querySelectorAll('.drop-zone').forEach(zone => {
+                    zone.addEventListener('dragover', allowDrop);
+                    zone.addEventListener('dragleave', dragLeave);
+                    zone.addEventListener('drop', drop);
+                });
+                
+                // Add new drop zone after this element
+                const newDropZone = document.createElement('div');
+                newDropZone.className = 'drop-zone';
+                newDropZone.addEventListener('dragover', allowDrop);
+                newDropZone.addEventListener('dragleave', dragLeave);
+                newDropZone.addEventListener('drop', drop);
+                
+                elementDiv.parentNode.insertBefore(newDropZone, elementDiv.nextSibling);
+                
+                saveState();
+                updateSaveStatus('Saved');
+                
+                console.log(`✅ Added ${draggedElement} component`);
+            }
+        }
+
+        // Element Management Functions
+        function selectElement(element) {
+            deselectAll();
+            element.classList.add('selected');
+            selectedElement = element;
+            showProperties(element);
+        }
+
+        function deselectAll() {
+            document.querySelectorAll('.dropped-element.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            selectedElement = null;
+            hideProperties();
+        }
+
+        function removeElement(element) {
+            if (confirm('Are you sure you want to delete this element?')) {
+                element.remove();
+                saveState();
+                hideProperties();
+            }
+        }
+
+        function cloneElement(element) {
+            const clone = element.cloneNode(true);
+            element.parentNode.insertBefore(clone, element.nextSibling);
+            
+            // Add drop zone after clone
+            const newDropZone = document.createElement('div');
+            newDropZone.className = 'drop-zone';
+            newDropZone.setAttribute('ondrop', 'drop(event)');
+            newDropZone.setAttribute('ondragover', 'allowDrop(event)');
+            newDropZone.setAttribute('ondragleave', 'dragLeave(event)');
+            
+            clone.parentNode.insertBefore(newDropZone, clone.nextSibling);
+            
+            saveState();
+        }
+
+        function moveUp(element) {
+            const prev = element.previousElementSibling;
+            if (prev && prev.classList.contains('drop-zone')) {
+                const prevPrev = prev.previousElementSibling;
+                if (prevPrev) {
+                    element.parentNode.insertBefore(element, prevPrev);
+                    saveState();
+                }
+            }
+        }
+
+        function moveDown(element) {
+            const next = element.nextElementSibling;
+            if (next && next.classList.contains('drop-zone')) {
+                const nextNext = next.nextElementSibling;
+                if (nextNext) {
+                    element.parentNode.insertBefore(element, nextNext.nextElementSibling);
+                    saveState();
+                }
+            }
+        }
+
+        // Properties Panel Functions
+        function showProperties(element) {
+            const propertiesContent = document.getElementById('propertiesContent');
+            const componentType = element.dataset.componentType;
+            const properties = JSON.parse(element.dataset.properties || '{}');
+            
+            let html = `<h6 style="margin-bottom: 15px; color: #333;">${componentType.toUpperCase()} Properties</h6>`;
+            
+            // Generate property inputs based on component type
+            Object.keys(properties).forEach(key => {
+                const value = properties[key];
+                html += `
+                    <div class="property-group">
+                        <label class="property-label">${key.charAt(0).toUpperCase() + key.slice(1)}</label>
+                        <input type="text" class="property-input" data-property="${key}" value="${value}" onchange="updateProperty('${key}', this.value)">
+                    </div>
+                `;
+            });
+            
+            html += `
+                <div class="property-group" style="margin-top: 30px;">
+                    <button class="btn btn-danger btn-sm" onclick="removeElement(selectedElement)" style="width: 100%;">Delete Element</button>
+                </div>
+            `;
+            
+            propertiesContent.innerHTML = html;
+            
+            // Show properties panel on mobile
+            document.getElementById('propertiesPanel').style.display = 'flex';
+        }
+
+        function hideProperties() {
+            document.getElementById('propertiesContent').innerHTML = `
+                <div style="text-align: center; padding: 40px 20px; color: #666; font-style: italic;">
+                    Select an element to edit its properties
+                </div>
+            `;
+        }
+
+        function updateProperty(property, value) {
+            if (selectedElement) {
+                const properties = JSON.parse(selectedElement.dataset.properties || '{}');
+                properties[property] = value;
+                selectedElement.dataset.properties = JSON.stringify(properties);
+                
+                // Update the actual element based on property
+                updateElementAppearance(selectedElement, property, value);
+                saveState();
+            }
+        }
+
+        function updateElementAppearance(element, property, value) {
+            const componentType = element.dataset.componentType;
+            
+            // Basic text updates
+            if (property === 'text') {
+                const textElement = element.querySelector('.editable');
+                if (textElement) {
+                    textElement.textContent = value;
+                }
+            }
+            
+            // Color updates
+            if (property === 'color') {
+                const colorElement = element.querySelector('.editable');
+                if (colorElement) {
+                    colorElement.style.color = value;
+                }
+            }
+            
+            // Background updates
+            if (property === 'background') {
+                element.style.backgroundColor = value;
+            }
+        }
+
+        function togglePropertiesPanel() {
+            const panel = document.getElementById('propertiesPanel');
+            panel.style.display = panel.style.display === 'none' ? 'flex' : 'none';
+        }
+
+        // Device Switching
+        function switchDevice(device) {
+            currentDevice = device;
+            const canvas = document.getElementById('canvas');
+            const deviceButtons = document.querySelectorAll('[data-device]');
+            
+            // Update button states
+            deviceButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.device === device);
+            });
+            
+            // Update canvas size
+            canvas.className = `canvas ${device}`;
+            
+            console.log(`📱 Switched to ${device} view`);
+        }
+
+        // Tab Switching
+        function switchTab(tabName) {
+            const tabs = document.querySelectorAll('.sidebar-tab');
+            tabs.forEach(tab => {
+                tab.classList.toggle('active', tab.dataset.tab === tabName);
+            });
+            
+            // Here you would load different content based on the tab
+            console.log(`📂 Switched to ${tabName} tab`);
+        }
+
+        // History Management
+        function saveState() {
+            const canvas = document.getElementById('canvas');
+            const state = canvas.innerHTML;
+            
+            // Remove future history if we're not at the end
+            if (historyIndex < history.length - 1) {
+                history = history.slice(0, historyIndex + 1);
+            }
+            
+            history.push(state);
+            historyIndex++;
+            
+            // Limit history size
+            if (history.length > 50) {
+                history.shift();
+                historyIndex--;
+            }
+        }
+
+        function undo() {
+            if (historyIndex > 0) {
+                historyIndex--;
+                document.getElementById('canvas').innerHTML = history[historyIndex];
+                console.log('↶ Undo');
+            }
+        }
+
+        function redo() {
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                document.getElementById('canvas').innerHTML = history[historyIndex];
+                console.log('↷ Redo');
+            }
+        }
+
+        // Save/Load Functions
+        function autoSave() {
+            saveSite();
+            updateSaveStatus('Auto-saved');
+        }
+
+        function saveSite() {
+            const canvas = document.getElementById('canvas');
+            const siteData = {
+                html: canvas.innerHTML,
+                timestamp: new Date().toISOString(),
+                device: currentDevice
+            };
+            
+            localStorage.setItem('website-builder-data', JSON.stringify(siteData));
+            updateSaveStatus('Saved');
+            console.log('💾 Site saved');
+        }
+
+        function loadSite() {
+            const saved = localStorage.getItem('website-builder-data');
+            if (saved) {
+                const siteData = JSON.parse(saved);
+                document.getElementById('canvas').innerHTML = siteData.html;
+                setupDropZones(); // Re-setup event listeners after loading
+                if (siteData.device) {
+                    switchDevice(siteData.device);
+                }
+                saveState();
+                console.log('📂 Site loaded');
+            }
+        }
+
+        function updateSaveStatus(status) {
+            document.getElementById('saveStatus').textContent = status;
+            setTimeout(() => {
+                document.getElementById('saveStatus').textContent = 'Saved';
+            }, 2000);
+        }
+
+        function clearCanvas() {
+            if (confirm('Are you sure you want to clear the entire canvas? This action cannot be undone.')) {
+                const canvas = document.getElementById('canvas');
+                canvas.innerHTML = '<div class="drop-zone"></div>';
+                setupDropZones(); // Re-setup event listeners
+                saveState();
+                hideProperties();
+                console.log('🗑️ Canvas cleared');
+            }
+        }
+
+        // Export Functions
+        function previewSite() {
+            alert('Preview functionality temporarily disabled.');
+            console.log('👁️ Preview disabled');
+        }
+
+        function exportSite() {
+            alert('Export functionality temporarily disabled. Use Preview instead.');
+            console.log('📤 Export disabled');
+        }
+
+        // Load saved site on startup
+        setTimeout(loadSite, 500);
+    </script>
 </body>
 </html>
